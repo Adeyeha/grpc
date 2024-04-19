@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package account;
+
+import "google/protobuf/empty.proto";
+
+service AccountController {
+    rpc List(AccountListRequest) returns (stream Account) {}
+    rpc Create(Account) returns (Account) {}
+    rpc Retrieve(AccountRetrieveRequest) returns (Account) {}
+    rpc RetrieveByCustomer(AccountRetrieveByCustomerRequest) returns (stream Account) {}
+    rpc Update(Account) returns (Account) {}
+    rpc Destroy(Account) returns (google.protobuf.Empty) {}
+    rpc DestroyAll(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+}
+
+message Account {
+    int32 account_number = 1;
+    string account_type = 2;
+    string currency = 3;
+    string customer_id = 4;
+    float balance = 5;
+}
+
+message AccountListRequest {
+}
+
+message AccountRetrieveRequest {
+    int32 account_number = 1;
+}
+
+message AccountRetrieveByCustomerRequest {
+    string customer_id = 1;
+}

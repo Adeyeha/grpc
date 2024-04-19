@@ -1,0 +1,8 @@
+django<4.0
+djangorestframework   # we need the serialization
+djangogrpcframework
+grpcio
+grpcio-tools
+fastapi
+uvicorn
+requests

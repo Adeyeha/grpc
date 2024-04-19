@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package customer;
+
+import "google/protobuf/empty.proto";
+
+service CustomerController {
+    rpc List(CustomerListRequest) returns (stream Customer) {}
+    rpc Create(Customer) returns (Customer) {}
+    rpc Retrieve(CustomerRetrieveRequest) returns (Customer) {}
+    rpc RetrievebyPhone(CustomerRetrievebyPhoneRequest) returns (Customer) {}
+    rpc Update(Customer) returns (Customer) {}
+    rpc Destroy(Customer) returns (google.protobuf.Empty) {}
+    rpc DestroyAll(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+}
+
+message Customer {
+    int32 customer_id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string email = 4;
+    string phone_number = 5;
+}
+
+message CustomerListRequest {
+}
+
+message CustomerRetrieveRequest {
+    int32 customer_id = 1;
+}
+
+message CustomerRetrievebyPhoneRequest {
+    string phone_number = 1;
+}
